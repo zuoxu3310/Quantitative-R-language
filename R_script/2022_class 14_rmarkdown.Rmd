@@ -1,0 +1,138 @@
+---
+title: "Rmarkdown"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Above these are global settings for all chunks, they are not visible in the final file (because there is include=FALSE, we will discuss it later in this doc)
+
+In Markdown, we can combine code and its output, images, graphs, text, etc.
+
+
+What can we include in the heading? -So many things!
+```{r}
+#title: "Rmarkdown class"
+#date: "11 January 2023"
+#output:                 # options for the code
+#  html_document:        # later knit into this format
+#    toc: yes            # to add table of contents 
+#    toc_float: yes      # scroll it?
+#    code_folding: hide  # the source (original) code in chunks
+```
+
+# Text formatting
+
+
+# First level header
+
+## Second level header
+
+### Third level header
+
+*Italics*, или _italics_
+
+**Bold**, __bold__
+
+~~Crossed out~~
+
+`monospaced text`
+
+symbol^index^
+
+symbol~index~
+
+x^3^~n+1~
+
+dash --
+
+long dash ---
+
+
+![image caption](name of the file.jpg)
+
+[link text](http://www.ya.ru)
+
+Just a text [^1]
+ 
+ [^1]: Text of the footnote
+ 
+
+- unnumbered list
+- unnumbered list
+
+1. numbered list
+2. numbered list
+
+```{r}
+
+```
+
+
+
+
+# Code insertion and execution options
+### “Chunks” of the code can be configured (what to show from the code and output)
+```{r}
+x <- c(3,7,9,4,5)
+x
+```
+
+
+```{r}
+# it is indicated in the chunk options that the code will be written in the R language
+# we write the R code inside as we did it in scripts
+```
+
+**echo**
+
+Should I output the code? TRUE / FALSE
+
+```{r, echo=TRUE}
+print("echo=TRUE")
+```
+
+```{r, echo=F}
+print("echo=FALSE, значит показывается только результат")
+```
+
+**eval**
+
+Should I show the result? TRUE / FALSE
+
+```{r, eval=T}
+print("eval=T")
+```
+```{r, eval=F}
+print("eval=F, результат не выводится")
+```
+
+**include**
+
+Should I show both the code and the result? TRUE / FALSE
+
+For example, we don't want to show that we downloaded a lot of packages and R successfully uploaded them
+```{r, include=T}
+print("include=T, значит все показывает")
+```
+```{r, include=F}
+print("include=F, значит код запущен, но ничего не выводится")
+```
+
+**collapse**
+
+Combine the result and the code in one block? TRUE / FALSE
+```{r, collapse=T}
+print("collapse=T")
+```
+```{r, collapse=F}
+print("collapse=F")
+```
+
+**error=F** ignores the error, because with the error the file cannot be knitted
+
+**warning=F** removes the warning in the final file
+
+**If you want common options for all chunks, you can indicate them in the global settings on top**
+
